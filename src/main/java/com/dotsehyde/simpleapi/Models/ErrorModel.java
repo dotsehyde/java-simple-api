@@ -3,9 +3,9 @@ package com.dotsehyde.simpleapi.Models;
 import java.util.HashMap;
 
 public class ErrorModel {
-    private int status;
-    private String message;
-    private HashMap<String,Object> details ;
+    public int status;
+    public String message;
+    public HashMap<String,Object> details ;
 
     public ErrorModel() {
     }
@@ -17,9 +17,6 @@ public class ErrorModel {
     }
 
     // getters and setters
-    public String getMessage(){
-        return message;
-    }
 
     //Methods
     public void addDetail(String key, Object value){

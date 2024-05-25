@@ -1,27 +1,41 @@
 package com.dotsehyde.simpleapi.Models;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 /**
  * User DataModel
  */
+@Entity
 public class User {
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Email(message = "Email should be valid")
+    @NotNull
     private String email;
+
+    @Size(min = 2, max = 50)
+    @NotNull
     private String name;
 
     public User() {
     }
 
-    public User(Integer id, String email, String name) {
+    public User(Long id, String email, String name) {
         this.id = id;
         this.email = email;
         this.name = name;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -41,5 +55,12 @@ public class User {
         this.name = name;
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
